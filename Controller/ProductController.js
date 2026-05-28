@@ -1,7 +1,8 @@
 
 var Product = require("../Model/ProductModel");
 const { uploadToCloudinary } = require("../helper/cloudinaryhelper");
-var { client } = require("../config/redisClient");
+var { redisClient } = require("../config/redisClient");
+// var { client } = require("../config/redisClient");
 
 var getAllProducts = async (req, res) => {
     try {
@@ -11,9 +12,9 @@ var getAllProducts = async (req, res) => {
 
         var cacheKey = `allproducts:${page}:${limit}`;
 
-      
-        if (client.isOpen) {
-            var cachedData = await client.get(cacheKey);
+       console.log(redisClient)
+        if(redisClient.isOpen) {
+            var cachedData = await redisClient.get(cacheKey);
             if (cachedData) {
                 console.log("✅ Data from Redis");
                 return res.status(200).json(JSON.parse(cachedData));
@@ -33,8 +34,8 @@ var getAllProducts = async (req, res) => {
         };
 
        
-        if (client.isOpen) {
-            await client.setEx(cacheKey, 3600, JSON.stringify(response));
+    if(redisClient.isOpen) {
+            await redisClient.setEx(cacheKey, 3600, JSON.stringify(response));
         }
 
         console.log("📦 Data from MongoDB");
@@ -53,8 +54,8 @@ var getSingleProduct = async (req, res) => {
         var cacheKey = `product:${id}`;
 
        
-        if (client.isOpen) {
-            var cachedData = await client.get(cacheKey);
+        if(redisClient.isOpen) {
+           var cachedData = await redisClient.get(cacheKey);
             if (cachedData) {
                 return res.status(200).json({
                     singleProduct: JSON.parse(cachedData)
@@ -69,8 +70,8 @@ var getSingleProduct = async (req, res) => {
         }
 
     
-        if (client.isOpen) {
-            await client.setEx(cacheKey, 3600, JSON.stringify(product));
+    if(redisClient.isOpen) {
+            await redisClient.setEx(cacheKey, 3600, JSON.stringify(response));
         }
 
         res.status(200).json({ singleProduct: product });
@@ -100,9 +101,9 @@ var addNewProduct = async (req, res) => {
             image: { url, publicId }
         });
 
-        if (client.isOpen) {
-            const keys = await client.keys("allproducts:*");
-            if (keys.length) await client.del(keys);
+        if(redisClient.isOpen) {
+            const keys = await redisClient.keys("allproducts:*");
+            if (keys.length) await redisClient.del(keys);
         }
 
         res.status(201).json({
@@ -132,9 +133,9 @@ var updateProduct = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        //  Clear cache
-        if (client.isOpen) {
-            await client.del(`product:${id}`);
+        // 🔹 Clear cache
+        if(redisClient.isOpen) {
+            await redisClient.del(`product:${id}`);
 
             const keys = await client.keys("allproducts:*");
             if (keys.length) await client.del(keys);
@@ -162,8 +163,8 @@ var deleteProduct = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        //  Clear cache
-        if (client.isOpen) {
+        // 🔹 Clear cache
+       if(redisClient.isOpen) {
             await client.del(`product:${id}`);
 
             const keys = await client.keys("allproducts:*");
