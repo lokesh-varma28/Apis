@@ -132,7 +132,7 @@ var updateProduct = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        // 🔹 Clear cache
+        //  Clear cache
         if (client.isOpen) {
             await client.del(`product:${id}`);
 
@@ -162,7 +162,7 @@ var deleteProduct = async (req, res) => {
             return res.status(404).json({ message: "Product not found" });
         }
 
-        // 🔹 Clear cache
+        //  Clear cache
         if (client.isOpen) {
             await client.del(`product:${id}`);
 
@@ -180,7 +180,7 @@ var deleteProduct = async (req, res) => {
     }
 };
 
-// ================= EXPORT =================
+
 module.exports = {
     getAllProducts,
     getSingleProduct,

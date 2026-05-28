@@ -1,38 +1,3 @@
-// var express = require("express")
-// const { registerUser, login , verifyOtp, resendOtp, forgotPassword,  resetPassword} = require("../Controller/UserController")
-
-// const validate =require("../MiddleWare/validateMiddleware")
-
-// const { registerSchema } = require("../validation/authValidation")
-
-// const { registerUser,verifyOtp,resendOtp,login,forgotPassword, resetPassword } = require("../Controller/UserController")
-
-
-
-// var router = express.Router()
-
-
-// // router.post("/register",registerUser)
-
-// router.post("/register", validate(registerSchema), registerUser)
-
-
-// router.post("/login",login)
-
-// router.post("/verify-otp", verifyOtp)
-
-// router.post("/resend-otp", resendOtp)
-
-//  router.post("/forgot-password", forgotPassword)
-
-//  router.post("/reset-password", resetPassword)
-
-
-// // router.post("/refresh-token", refreshToken)
-
-
-
-// module.exports = router 
 
 var express = require("express")
 var router = express.Router()

@@ -27,7 +27,7 @@ app.use(cookieParser())
 
 
 
- app.set('trust proxy', 1); // ✅ important for rate limit
+ app.set('trust proxy', 1); //  important for rate limit
 
  app.use(helmet())
 
@@ -41,7 +41,7 @@ const startServer = async () => {
 
   const { productLimiter, adminLimiter } = createLimiters();
 
- // ✅ FIXED: scoped limiters
+ //  FIXED: scoped limiters
   app.use("/products", productLimiter, productRoutes);
   app.use("/admin", adminLimiter);
 
