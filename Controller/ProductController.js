@@ -2,7 +2,6 @@
 var Product = require("../Model/ProductModel");
 const { uploadToCloudinary } = require("../helper/cloudinaryhelper");
 var { redisClient } = require("../config/redisClient");
-// var { client } = require("../config/redisClient");
 
 var getAllProducts = async (req, res) => {
     try {

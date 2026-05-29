@@ -1,4 +1,262 @@
+# E-Commerce Backend API
+
+## Base URL
+
+```bash
+http://localhost:3000
+```
+
+---
+
+# Authentication APIs
+
+## Register User
+
+### Endpoint
+
+```bash
+POST /register
+```
+
+### Request Body
+
+```json
+{
+  "name": "Lokesh",
+  "email": "lokesh@gmail.com",
+  "password": "123456"
+}
+```
+
+---
+
+## Login User
+
+### Endpoint
+
+```bash
+POST /login
+```
+
+### Request Body
+
+```json
+{
+  "email": "lokesh@gmail.com",
+  "password": "123456"
+}
+```
+
+---
+
+# Product APIs
+
+## Create Product
+
+### Endpoint
+
+```bash
+POST /products
+```
+
+### Request Body
+
+```json
+{
+  "name": "iPhone 15",
+  "price": 70000,
+  "category": "mobile"
+}
+```
+
+---
+
+## Get All Products
+
+### Endpoint
+
+```bash
+GET /products
+```
+
+---
+
+## Get Single Product
+
+### Endpoint
+
+```bash
+GET /products/:id
+```
+
+### Example
+
+```bash
+GET /products/6819849d209da1e72a9de898
+```
+
+---
+
+## Update Product
+
+### Endpoint
+
+```bash
+PATCH /products/:id
+```
+
+### Request Body
+
+```json
+{
+  "price": 65000
+}
+```
+
+---
+
+## Delete Product
+
+### Endpoint
+
+```bash
+DELETE /products/:id
+```
+
+---
+
+# Cart APIs
+
+## Get Cart
+
+### Endpoint
+
+```bash
+GET /cart
+```
+
+---
+
+## Add To Cart
+
+### Endpoint
+
+```bash
+POST /addcart
+```
+
+### Request Body
+
+```json
+{
+  "productId": "6819849d209da1e72a9de898"
+}
+```
+
+---
+
+## Decrease Cart Quantity
+
+### Endpoint
+
+```bash
+PATCH /decreasecart
+```
+
+### Request Body
+
+```json
+{
+  "productId": "6819849d209da1e72a9de898"
+}
+```
+
+---
+
+# Profile APIs
+
+## Get Profile
+
+### Endpoint
+
+```bash
+GET /profile
+```
+
+---
+
+## Update Profile
+
+### Endpoint
+
+```bash
+PATCH /profile
+```
+
+### Request Body
+
+```json
+{
+  "name": "Lokesh Varma"
+}
+```
+
+---
+
+# Order APIs
+
+## Create Order
+
+### Endpoint
+
+```bash
+POST /orders
+```
+
+---
+
+## Get Orders
+
+### Endpoint
+
+```bash
+GET /orders
+```
+
+---
+
+# Wishlist APIs
+
+## Add Wishlist
+
+### Endpoint
+
+```bash
+POST /wishlist
+```
+
+### Request Body
+
+```json
+{
+  "productId": "6819849d209da1e72a9de898"
+}
+```
+
+---
+
+## Get Wishlist
+
+### Endpoint
+
+```bash
+GET /wishlist
+```
+
+
+
 # 🚀 Advanced Authentication API
+
 
 A secure Node.js + Express + MongoDB authentication system with:
 
