@@ -3,7 +3,9 @@ var Product = require("../Model/ProductModel")
 var razorpay = require("../config/razorpay")
 var mongoose = require("mongoose")
 
+
 var checkout = async (req, res) => {
+    console.log("RAZORPAY INSTANCE:", razorpay);
     try {
         var userId = req.user.userId
 
