@@ -8,9 +8,9 @@ var router = express.Router()
 
 router.get("/cart",authMiddleware,getCart)
 
-router.post("/addcart",authMiddleware,addToCart)
+router.post("/add-cart", authMiddleware, addToCart)
 
-router.patch("/decreasecart", authMiddleware, decreaseCartQuantity)
+router.patch("/decrease-cart", authMiddleware, decreaseCartQuantity)
 
 
 module.exports = router 

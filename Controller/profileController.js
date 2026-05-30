@@ -40,11 +40,11 @@ var updateProfile = async(req,res)=>{
             var hashedPassword = await bcrypt.hash(password,10)
             updatedUser.password = hashedPassword
         }
-        var updateUserdata = await User.findByIdAndUpdate(userId,updatedUser,{new : true}).select("-password")
-        if (!updateUserdata) {
+        var updatedUserData = await User.findByIdAndUpdate(userId, updatedUser, { new: true }).select("-password")
+        if (!updatedUserData) {
             return res.status(404).json({ message: "user not found" })
         }
-        return res.status(200).json({ user: updateUserdata })
+        return res.status(200).json({ user: updatedUserData })
 
 
     }catch(error){

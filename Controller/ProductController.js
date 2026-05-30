@@ -70,7 +70,7 @@ var getSingleProduct = async (req, res) => {
 
     
     if(redisClient.isOpen) {
-            await redisClient.setEx(cacheKey, 3600, JSON.stringify(response));
+            await redisClient.setEx(cacheKey, 3600, JSON.stringify(product));
         }
 
         res.status(200).json({ singleProduct: product });
@@ -136,8 +136,8 @@ var updateProduct = async (req, res) => {
         if(redisClient.isOpen) {
             await redisClient.del(`product:${id}`);
 
-            const keys = await client.keys("allproducts:*");
-            if (keys.length) await client.del(keys);
+            const keys = await redisClient.keys("allproducts:*");
+            if (keys.length) await redisClient.del(keys);
         }
 
         res.status(200).json({
@@ -164,10 +164,10 @@ var deleteProduct = async (req, res) => {
 
         // 🔹 Clear cache
        if(redisClient.isOpen) {
-            await client.del(`product:${id}`);
+            await redisClient.del(`product:${id}`);
 
-            const keys = await client.keys("allproducts:*");
-            if (keys.length) await client.del(keys);
+            const keys = await redisClient.keys("allproducts:*");
+            if (keys.length) await redisClient.del(keys);
         }
 
         res.status(200).json({

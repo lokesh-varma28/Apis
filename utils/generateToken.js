@@ -9,7 +9,7 @@ const generateAccessToken = (user)=>{
 
     },
 
-    process.env.JWT_SECRET,
+    process.env.JWT_TOKEN,
 
     {expiresIn:"15m"})
 }
@@ -22,7 +22,7 @@ const generateRefreshToken = (user)=>{
 
     },
 
-    process.env.REFRESH_SECRET,
+    process.env.REFRESH_TOKEN_SECRET,
 
     {expiresIn:"7d"})
 }

@@ -32,26 +32,25 @@ var userSchema = new mongoose.Schema({
     otpExpires:{
         type:Date
     },
-    resetOtp:{
-    type:String
-},
-refreshToken:{
-    type:String
-},
-
-    otpAttempts:{
-        type:Number,
-        default:0
+    resetOtp: {
+        type: String
+    },
+    refreshToken: {
+        type: String
     },
 
-    otpLastSent:{
-        type:Date
+    otpAttempts: {
+        type: Number,
+        default: 0
     },
 
+    otpLastSent: {
+        type: Date
+    },
 
-resetOtpExpires:{
-    type:Date
-},
+    resetOtpExpires: {
+        type: Date
+    },
 
     lockUntil:{
         type:Date

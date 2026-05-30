@@ -1,15 +1,12 @@
-var express = require("express");
+var mongoose = require("mongoose")
 
-var mongoose = require("mongoose");
-
-var app = express();
-app.use(express.json());
-async function connectToDataBase(){
+async function connectToDatabase() {
     try {
         await mongoose.connect(process.env.MONGO_URL)
-        console.log("data base connected")
-    }catch(error){
-        console.log("error",error)
+        console.log("Database connected")
+    } catch (error) {
+        console.log("error", error)
     }
 }
-module.exports = connectToDataBase;
+
+module.exports = connectToDatabase

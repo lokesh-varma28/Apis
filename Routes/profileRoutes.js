@@ -7,7 +7,7 @@ var router = express.Router()
 
 router.get("/profile", authMiddleware, getProfile)
 
-router.put("/updateprofile", authMiddleware, updateProfile)
+router.put("/update-profile", authMiddleware, updateProfile)
 
 
 module.exports = router 
