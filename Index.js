@@ -18,6 +18,12 @@ const paymentRoutes = require("./Routes/paymentRoutes.js")
 const orderRoutes = require("./Routes/orderRoutes.js")
 const wishlistRoutes = require("./Routes/wishlistRoutes.js")
 
+app.get("/", (req, res) => {
+    res.status(200).json({
+      success: true,
+      message: "API is running"
+    });
+  });
 const app = express()
 app.use(cookieParser())
 
